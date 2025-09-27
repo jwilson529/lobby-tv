@@ -1,0 +1,87 @@
+# ------------------------------------------------------------------------
+# This file specifies intentionally untracked files that Git should ignore
+# - https://git-scm.com/docs/gitignore
+# ------------------------------------------------------------------------
+
+# Numerous always-ignore extensions
+*.bak
+*.cvs
+*.db
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.zip
+
+# Ignore all files and directories starting with . or ~ or ._ or ending with ~
+.*
+~*
+*~
+._*
+# but track dotfiles we care about
+!.babelrc.js
+!.browserslist
+!.editorconfig
+!.gitattributes
+!.github
+!.gitignore
+
+# Ignore all files with .lock extensions
+*.lock
+# but track
+!composer.lock
+
+# OS or Editor files and folders
+*.code-workspace
+*.elc
+*.esproj
+*.komodoproject
+*.sublime*
+*.tmproj*
+
+# Dependencies
+bower_components
+node_modules
+
+# Ignore root-level vendor folder
+/vendor/
+
+# Ignore all CSS and JS files (compiled output)
+/centerstonehealth/css/*
+/centerstonehealth/js/*
+
+# EXCEPT: Keep minified files and css/vendor/
+!/centerstonehealth/css/*.min.css
+!/centerstonehealth/js/*.min.js
+!/centerstonehealth/css/vendor/
+!/centerstonehealth/css/vendor/**
+
+# Other Understrap specific files and directories
+phpcs.xml
+dist/
+dist-product/
+**/img
+
+# Source maps (optional)
+*.map
+
+# PostCSS / Sass / Rollup temp files
+.sass-cache/
+.rollup.cache/
+
+# macOS system files
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Log/output files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files (if applicable)
+.env
+.env.local
+.env.*.local

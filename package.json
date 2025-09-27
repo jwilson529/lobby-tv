@@ -1,0 +1,24 @@
+{
+  "name": "cstn-walk-in-queue",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "fix": "phpcbf -d error_reporting=\"E_ALL&~E_DEPRECATED\" --ignore=*/vendor/*,*/node_modules/* --standard=WordPress --extensions=php .",
+      "check": "phpcs -d error_reporting=\"E_ALL&~E_DEPRECATED\" --ignore=*/vendor/*,*/node_modules/* --standard=WordPress --extensions=php . > check.txt",
+      "phpmd": "phpmd . text phpmd.xml --exclude vendor,node_modules > phpmd.txt",
+      "dist": "find . -name '.DS_Store' -type f -delete && zip -r cstn-walk-in-queue.zip . -x \"node_modules/*\" \"assets/*\" \"*.git/*\" \"*.github/*\" \"*.gitignore\" \"*.zipignore\" \"vendor/*\" \"check.txt\" \"composer.json\" \"phpmd.txt\" \"package.json\" \"package-lock.json\" \"phpmd.xml\" \"README.md\"",
+      "plugin-check": "wp plugin check .",
+      "update-wpcs": "composer global require wp-coding-standards/wpcs --update-with-all-dependencies",
+      "update-phpcs": "composer global require squizlabs/php_codesniffer --update-with-all-dependencies",
+      "refresh-phpcs": "phpcs --clear-cache && phpcs --config-set installed_paths ~/.composer/vendor/wp-coding-standards/wpcs"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
