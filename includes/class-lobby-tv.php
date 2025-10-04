@@ -78,6 +78,7 @@ class Lobby_Tv {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_content_type_hooks();
 	}
 
 	/**
@@ -109,6 +110,11 @@ class Lobby_Tv {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( __DIR__ ) . 'includes/class-lobby-tv-i18n.php';
+
+		/**
+		 * The class responsible for registering custom post types and taxonomies.
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-lobby-tv-cpt.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -168,6 +174,20 @@ class Lobby_Tv {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+	}
+
+	/**
+	 * Register hooks for custom post types and taxonomies.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_content_type_hooks() {
+
+		$cpt_registrar = new Lobby_Tv_Cpt();
+
+		$this->loader->add_action( 'init', $cpt_registrar, 'register_cpts_and_taxonomies' );
+		$this->loader->add_action( 'admin_menu', $cpt_registrar, 'register_admin_menu' );
 	}
 
 	/**
